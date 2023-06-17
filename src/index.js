@@ -60,14 +60,14 @@ function App(){
 
 }
 
-function Pizza(){
-
-    return <div>
+function Pizza(props){
+    return (<div className="pizza">
         
-            <h2>Pizza Spinacci</h2>
-            <img src="/pizzas/spinaci.jpg"></img>
+            <h2>{props.name}</h2>
+            <img src={props.img} />
+            <h3>Price:$ {props.price} </h3>
         
-    </div>
+    </div>)
 }
 
 
@@ -78,13 +78,16 @@ function Menu (){
     const closeHour = 22
     const isOpen = openHour <= hour && closeHour>= hour;
 
-    return <div><h2>Our Menu</h2>
-
-    <Pizza />
-    <Pizza />
-    <Pizza />
+    return (
+      <main className="menu">
+    <h2>Our Menu</h2>
+     <div>
+      {pizzaData.map((pizza) =>(
+        <Pizza name={pizza.name} img={pizza.photoName} price={pizza.price} />
+      ))}
     </div>
-}
+    </main>
+)}
 
 function Header(){
 
